@@ -1,0 +1,26 @@
+= jQuery VexFlow
+
+This is a simple library that uses VexFlow and the dependency vexflow-json to render staff notation.
+
+There are two primary ways to use this:
+
+== Setting Data In-Line:
+
+  <div id="my-chord" />
+
+  $("#my-chord").vexflow({
+    clef: "treble",
+    notes: [
+      { duration: "q", keys: ["C", "Eb", "G", "Bb"] },
+      { duration: "q", keys: ["C", "Eb", "F", "A"] },
+      { duration: "h", keys: ["Bb", "D", "F', "A"] }
+    ]
+  });
+
+== Setting Data on Element's Attribute:
+
+  <div class="staff" data-staff="['C', 'E', 'G', 'Bb']" />
+
+  $(".staff").vexflow();
+
+
