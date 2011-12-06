@@ -12,13 +12,13 @@
   // data - An object of vexflow-json data.
   //
   // Returns the jQuery object
-  $.fn.vexflow = function(data) {
+  $.fn.vexflow = function(data, render_options) {
     return this.each(function() {
-      $.vexflow(this, data);
+      $.vexflow(this, data, render_options);
     });
   };
   
-  $.vexflow = function(element, data) {
+  $.vexflow = function(element, data, render_options) {
     if (!Vex.Flow.JSON) {
       throw "Must require vexflow-json before using this.";
       return false;
@@ -27,17 +27,14 @@
     // If we have a data-staff attribute and passed data is undefined, use it!
     if (!data && $(element).attr("data-staff")) { data = JSON.parse($(element).attr("data-staff")); }
 
-    // If we don't have a width/height any other way, set some defaults:
-    var width = $(element).attr("data-width");
-    var height = $(element).attr("data-height");
+    if (!render_options) { render_options = {}; }
+    if (!render_options.width) { render_options.width = $(element).attr("data-width") || $(element).attr("width") || 600; }
+    if (!render_options.height) { render_options.height = $(element).attr("data-height") || $(element).attr("height") || 110; }
 
-    if (!width) { width = 600; }
-    if (!height) { height = 110; }
-
-    var canvas_element = $("<canvas width='" + width + "' height='" + height + "'></canvas>");
+    var canvas_element = $("<canvas width='" + render_options.width + "' height='" + render_options.height + "'></canvas>");
     canvas_element.appendTo(element)
     
-    return (new Vex.Flow.JSON(data)).render(canvas_element[0]);
+    return (new Vex.Flow.JSON(data)).render(canvas_element[0], render_options);
   };
 
 })(jQuery);

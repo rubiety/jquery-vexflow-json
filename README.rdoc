@@ -19,8 +19,18 @@ There are two primary ways to use this:
 
 == Setting Data on Element's Attribute:
 
-  <div class="staff" data-clef="treble" data-notes='["C", "E", "G", "Bb"]' />
+  <div class="staff" data-clef="treble" data-staff='["C", "E", "G", "Bb"]' />
 
   $(".staff").vexflow();
 
+== Dimensions
 
+By default jquery-vexflow will determine width and height of the element, either by "width"/"height" or "data-width"/"data-height" attributes:
+  
+  <div class="staff" data-clef="treble" data-staff='["C", "E", "G", "Bb"]' data-width="400" data-height="150" />
+
+  $(".staff").vexflow();
+
+Alternately, the vexflow method accepts an optional second argument with render options (width and height) which will force width/height:
+  
+  $("#my-chord").vexflow(["C", "E", "G"], { width: 400, height: 150 });
