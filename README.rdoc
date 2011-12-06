@@ -19,7 +19,7 @@ There are two primary ways to use this:
 
 == Setting Data on Element's Attribute:
 
-  <div class="staff" data-staff="['C', 'E', 'G', 'Bb']" />
+  <div class="staff" data-clef="treble" data-notes='["C", "E", "G", "Bb"]' />
 
   $(".staff").vexflow();
 

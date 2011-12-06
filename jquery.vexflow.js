@@ -13,11 +13,6 @@
   //
   // Returns the jQuery object
   $.fn.vexflow = function(data) {
-    if (!data) {
-      throw "Must provide data to render a staff.";
-      return false;
-    }
-  
     return this.each(function() {
       $.vexflow(this, data);
     });
@@ -29,7 +24,17 @@
       return false;
     }
 
-    var canvas_element = $("<canvas width='#{this.canvas_width}' height='#{this.canvas_height}'></canvas>")
+    // If we have a data-staff attribute and passed data is undefined, use it!
+    if (!data && $(element).attr("data-staff")) { data = JSON.parse($(element).attr("data-staff")); }
+
+    // If we don't have a width/height any other way, set some defaults:
+    var width = $(element).attr("data-width");
+    var height = $(element).attr("data-height");
+
+    if (!width) { width = 600; }
+    if (!height) { height = 110; }
+
+    var canvas_element = $("<canvas width='" + width + "' height='" + height + "'></canvas>");
     canvas_element.appendTo(element)
     
     return (new Vex.Flow.JSON(data)).render(canvas_element[0]);
