@@ -13,7 +13,7 @@
   //
   // Returns the jQuery object
   $.fn.vexflow = function(data) {
-    if (!options) {
+    if (!data) {
       throw "Must provide data to render a staff.";
       return false;
     }
@@ -28,8 +28,11 @@
       throw "Must require vexflow-json before using this.";
       return false;
     }
+
+    var canvas_element = $("<canvas width='#{this.canvas_width}' height='#{this.canvas_height}'></canvas>")
+    canvas_element.appendTo(element)
     
-    return (new Vex.Flow.JSON(data)).render(element);
+    return (new Vex.Flow.JSON(data)).render(canvas_element[0]);
   };
 
 })(jQuery);
