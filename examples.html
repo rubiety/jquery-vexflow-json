@@ -58,6 +58,12 @@
     });
   </script>
 
+  <h2>Simple Chord across Clefs</h2>
+  <div id="simple-chord-across-clefs"></div>
+  <script type="text/javascript">
+    $("#simple-chord-across-clefs").vexflow(["C/3", "E/3", "G/4", "Bb/4"], { clef: ["treble", "bass"], width: 150, height: 180 });
+  </script>
+  
   <h2>Explicit Voices</h2>
   <h2>TODO</h2>
 
@@ -71,6 +77,12 @@
     $("#simple-chord-inline").vexflow();
   </script>
 
+  <h2>Simple Chord across Clefs - Inline</h2>
+  <div id="simple-chord-across-clefs-inline" height="180" data-clef="treble,bass" data-staff='["C/3", "E/3", "G/4", "Bb/4"]'></div>
+  <script type="text/javascript">
+    $("#simple-chord-across-clefs-inline").vexflow();
+  </script>
+  
 </body>
 
 </html>

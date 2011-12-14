@@ -34,3 +34,18 @@ By default jquery-vexflow will determine width and height of the element, either
 Alternately, the vexflow method accepts an optional second argument with render options (width and height) which will force width/height:
   
   $("#my-chord").vexflow(["C", "E", "G"], { width: 400, height: 150 });
+
+== Clef(s)
+
+By default jquery-vexflow will determine the clef to use using the "data-clef" attribute. This can be set to a single value of "treble" or "bass",
+or alternatively the "treble,bass" string which will render both clefs. Be sure that the height is set appropriately if rendering both clefs.
+
+  <div class="staff" data-clef="treble" data-staff='["C/3", "E/3", "G/4", "Bb/4"]' data-clef="treble,bass" data-height="180" />
+  
+  $(".staff").vexflow();
+  
+== Rendering Options
+
+jQuery VexFlow will take an optional second argument which is expected to be an object with rendering options. Typically this is unnecessary if you set the appropriate attributes on the element as specified above, but this could be used either instead or to override the element values:
+
+  $("#my-chord").vexflow(["C/3", "E/3", "G/4", "Bb/4"], { clef: ["treble", "bass"], width: 300, height: 180 });
